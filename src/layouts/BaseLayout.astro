@@ -73,7 +73,9 @@ const canonicalUrl = `${siteUrl}${canonicalPath}`;
         var u="https://analytics.therchrdsns.com/";
         _mtm.push({'mtm.url': u});
         var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-        g.async=true; g.src=u+'js/container_8BNVnhE0.js'; s.parentNode.insertBefore(g,s);
+        // The analytics host serves container files with a long CDN TTL. Bump cb when
+        // publishing a Matomo container revision so visitors receive the active ruleset.
+        g.async=true; g.src=u+'js/container_8BNVnhE0.js?cb=7'; s.parentNode.insertBefore(g,s);
       })();
     </script>
     <noscript><p><img src="https://analytics.therchrdsns.com/js/container_8BNVnhE0.php" style="border:0;" alt="" /></p></noscript>
