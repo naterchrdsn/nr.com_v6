@@ -10,6 +10,7 @@ import ContactContent from '../components/shared/ContactContent.astro';
 import BootScreen from '../components/desktop/BootScreen.astro';
 import EasterEggs from '../components/desktop/EasterEggs.astro';
 import SystemProperties from '../components/shared/SystemProperties.astro';
+import TipsContent from '../components/shared/TipsContent.astro';
 ---
 
 <!-- Boot Sequence -->
@@ -62,6 +63,10 @@ import SystemProperties from '../components/shared/SystemProperties.astro';
         <span class="recyclebin-subtext">(I don't throw away good code... usually.)</span>
       </p>
     </div>
+  </Window>
+
+  <Window id="tips" title="Nate95 Help" icon="/icons/help.svg" defaultWidth={390} defaultHeight={360} defaultX={220} defaultY={55}>
+    <TipsContent />
   </Window>
 
   <!-- Start Menu -->

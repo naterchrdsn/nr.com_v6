@@ -206,8 +206,9 @@
     setTimeout(startEasterEggs, delay);
   }
 
-  // Matomo Tag Manager event tracking helper
-  function trackEvent(action: string, name?: string) {
+  // Matomo Tag Manager event tracking helper. Keep this vocabulary bounded:
+  // no typed keys, click coordinates, durations, or visitor identifiers.
+  function trackEgg(action: 'discovery' | 'completion' | 'dismissed', name: string) {
     (window as any)._mtm?.push({ event: 'custom_event', event_category: 'Easter Egg', event_action: action, event_name: name });
   }
 
@@ -249,11 +250,11 @@
 
       container.classList.add('show');
       sessionStorage.setItem('clippy-seen', '1');
-      trackEvent('Clippy', 'Appeared');
+      trackEgg('discovery', 'clippy');
 
       // "Yes!" opens contact window via the window manager
       document.getElementById('clippy-yes')?.addEventListener('click', async () => {
-        trackEvent('Clippy', 'Clicked Yes');
+        trackEgg('completion', 'clippy');
         dismissClippy(container);
         const { openWindow } = await import('./window-manager');
         openWindow('contact');
@@ -261,7 +262,7 @@
 
       // Dismiss
       document.getElementById('clippy-dismiss')?.addEventListener('click', () => {
-        trackEvent('Clippy', 'Dismissed');
+        trackEgg('dismissed', 'clippy');
         dismissClippy(container);
       });
 
@@ -331,7 +332,7 @@
   }
 
   function activateKonami(overlay: HTMLElement) {
-    trackEvent('Konami Code', 'Activated');
+    trackEgg('completion', 'konami');
     overlay.style.display = 'flex';
 
     // Toggle desktop pattern
@@ -383,7 +384,7 @@
       if (clickCount >= 10) {
         clickCount = 0;
         sessionStorage.setItem('bsod-seen', '1');
-        trackEvent('BSOD', 'Triggered');
+        trackEgg('completion', 'bsod');
         showBSOD(bsod);
       }
     });
@@ -421,7 +422,7 @@
       }
 
       e.preventDefault();
-      trackEvent('Context Menu', 'Opened');
+      trackEgg('discovery', 'context_menu');
 
       // Position menu at cursor
       const x = Math.min(e.clientX, window.innerWidth - 170);
@@ -457,6 +458,7 @@
           showContextAlert('Icons are already arranged by\nimportance and vibes.');
           break;
         case 'properties':
+          trackEgg('completion', 'desktop_properties');
           showPropertiesDialog();
           break;
       }
@@ -649,7 +651,7 @@
       if (document.getElementById('konami-overlay')?.style.display === 'flex') return;
       if (document.getElementById('boot-screen')) return;
 
-      trackEvent('Screensaver', 'Activated');
+      trackEgg('discovery', 'screensaver');
       active = true;
       canvas.style.display = 'block';
       canvas.width = window.innerWidth;
@@ -702,6 +704,7 @@
     }
 
     function dismissScreensaver() {
+      trackEgg('dismissed', 'screensaver');
       active = false;
       canvas.style.display = 'none';
       if (animFrame) cancelAnimationFrame(animFrame);

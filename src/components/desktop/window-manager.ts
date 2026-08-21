@@ -45,6 +45,14 @@ function trackEvent(category: string, action: string, name?: string) {
   (window as any)._mtm?.push({ event: 'custom_event', event_category: category, event_action: action, event_name: name });
 }
 
+function trackTipsHints(id: string) {
+  if (id !== 'tips' || sessionStorage.getItem('tips-hints-seen')) return;
+  sessionStorage.setItem('tips-hints-seen', '1');
+  ['konami', 'context_menu', 'screensaver'].forEach((name) => {
+    trackEvent('Easter Egg', 'hint_seen', name);
+  });
+}
+
 // --- Open a window ---
 export function openWindow(id: string) {
   const win = document.getElementById(`window-${id}`);
@@ -63,6 +71,7 @@ export function openWindow(id: string) {
   const title = win.querySelector('.win95-titlebar-text')?.textContent || id;
   trackPageView(id, title);
   trackEvent('Window', 'open', id);
+  trackTipsHints(id);
 
   focusWindow(id);
   updateTaskbar();
