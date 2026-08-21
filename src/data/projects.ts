@@ -3,6 +3,7 @@ export interface Project {
   description: string;
   technologies: string[];
   link?: string;
+  linkLabel?: string;
   website?: string;
   image?: string;
 }
@@ -19,33 +20,16 @@ export interface CaseStudy {
 
 export const projects: Project[] = [
   {
-    title: 'angular-grab',
+    title: 'Nacho Labs Projects',
     description:
-      'A developer tool that lets you grab any element in your Angular app and give it to AI coding agents. Point at any UI element, press Cmd+C / Ctrl+C, and get the component name, file path, and HTML source copied to your clipboard — ready to paste into Claude, ChatGPT, Copilot, or any AI assistant. Features include full Angular component stack traces with source locations, freeze mode for grabbing tooltips and hover menus, a floating toolbar with history and theme controls, a plugin system for custom actions and hooks, and crosshair guidelines during selection. Zero production impact — automatically disabled outside dev mode. Supports esbuild, Vite, and Webpack via dedicated plugins, plus custom Angular CLI builders.',
+      'Browse the current Nacho Labs catalog of public products, open-source tools, packages, and experiments. It is the best place to find the work that is actively maintained and see where each project is headed.',
     technologies: [
-      'TypeScript',
-      'Angular',
-      'esbuild',
-      'Vite',
-      'Webpack',
+      'Open Source',
+      'Developer Tools',
+      'Nacho Labs',
     ],
-    link: 'https://github.com/nacho-labs-llc/angular-grab',
-    website: 'https://angular-grab.com',
-  },
-  {
-    title: 'Nachos',
-    description:
-      'Nachos is a modular, Docker-native AI assistant framework designed to be self-hosted and infinitely customizable. It uses a microservices architecture with NATS message bus for inter-service communication, supporting multiple LLM providers (Claude, GPT, Ollama) and messaging platforms (Slack, Discord, Telegram, WhatsApp, WebChat). The framework features container-per-component isolation, a TOML-based configuration system, built-in security policies with DLP scanning, and a CLI for stack management. Built as a monorepo with shared packages for configuration, state management, and tool interfaces.',
-    technologies: [
-      'TypeScript',
-      'Docker',
-      'NATS',
-      'Node.js',
-      'Hono',
-      'pnpm',
-    ],
-    link: 'https://github.com/Nacho-Labs-LLC/nachos',
-    image: '/images/portfolio/nachos.png',
+    link: 'https://nacholabs.net/projects',
+    linkLabel: 'View Nacho Labs Projects',
   },
   {
     title: 'Spudnik',

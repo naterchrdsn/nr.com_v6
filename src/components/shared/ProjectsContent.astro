@@ -33,7 +33,7 @@ import { projects, websitePortfolio, caseStudies, clientLogos } from '../../data
                 <div class="proj-os-links">
                   {project.link && (
                     <a href={project.link} target="_blank" rel="noopener" class="proj-os-link-btn win95-button">
-                      &#127760; View on GitHub
+                      &#127760; {project.linkLabel ?? 'View on GitHub'}
                     </a>
                   )}
                   {project.website && (
