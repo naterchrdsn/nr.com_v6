@@ -27,11 +27,15 @@ public/
 
 ## Development
 
+Requires Node.js 22.23.4 or newer (Astro 7).
+
 ```sh
 npm install      # Install dependencies
 npm run dev      # Start dev server at localhost:4321
 npm run build    # Build for production
 npm run preview  # Preview production build locally
+npx playwright install chromium # Install the headless test browser once
+npm test         # Desktop/mobile browser regression tests against dist/
 ```
 
 ## Crawlers
