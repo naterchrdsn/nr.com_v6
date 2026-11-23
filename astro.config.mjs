@@ -12,5 +12,5 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
 
-  integrations: [mdx(), sitemap()]
+  integrations: [mdx(), sitemap({ filter: (page) => !new URL(page).pathname.startsWith('/404') })]
 });

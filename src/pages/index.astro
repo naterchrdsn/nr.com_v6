@@ -1,17 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import DesktopOS from '../layouts/DesktopOS.astro';
-import MobileOS from '../layouts/MobileOS.astro';
+import ConstellationHome from '../components/ConstellationHome.astro';
 ---
 
-<BaseLayout>
-  <!-- Desktop: Win95 (hidden on mobile) -->
-  <div class="desktop-only" style="height: 100vh;">
-    <DesktopOS />
-  </div>
-
-  <!-- Mobile: Palm Pilot PDA (hidden on desktop) -->
-  <div class="mobile-only" style="height: 100vh;">
-    <MobileOS />
-  </div>
+<BaseLayout
+  description="Nate Richardson is a frontend architect and developer in Atlanta, GA, building at Nacho Labs. Links to Nacho Labs, GitHub, and social profiles."
+>
+  <ConstellationHome />
 </BaseLayout>

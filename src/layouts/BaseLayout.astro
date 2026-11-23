@@ -5,12 +5,14 @@ interface Props {
   title?: string;
   description?: string;
   canonicalPath?: string;
+  noindex?: boolean;
 }
 
 const {
   title = 'Nate Richardson | Frontend Architect & Developer',
-  description = 'Portfolio of Nate Richardson, a frontend-focused architect and developer with experience in building modern web applications.',
+  description = 'Nate Richardson is a frontend architect and developer in Atlanta, GA, building at Nacho Labs. Explore his projects, code, and social profiles.',
   canonicalPath = '/',
+  noindex = false,
 } = Astro.props;
 
 const siteUrl = 'https://naterichardson.com';
@@ -27,6 +29,8 @@ const canonicalUrl = `${siteUrl}${canonicalPath}`;
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
+    <link rel="alternate" type="text/markdown" href="/index.md" title="Markdown version" />
+    <!-- Machine-readable summary for LLMs and crawlers: /llms.txt -->
 
     <!-- SEO -->
     <title>{title}</title>
@@ -35,20 +39,25 @@ const canonicalUrl = `${siteUrl}${canonicalPath}`;
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Nate Richardson" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={`${siteUrl}/images/logo_cropped.png`} />
+    <meta property="og:image:alt" content="Nate Richardson" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@naterchrdsn" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={`${siteUrl}/images/nate_richardson_headshot2.jpg`} />
+    <meta name="twitter:image:alt" content="Nate Richardson" />
 
     <meta name="author" content="Nate Richardson" />
-    <meta name="robots" content="index, follow" />
-    <meta name="theme-color" content="#008080" />
+    <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow'} />
+    <meta name="theme-color" content="#07030f" />
 
     <!-- Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -57,11 +66,25 @@ const canonicalUrl = `${siteUrl}${canonicalPath}`;
       "name": "Nate Richardson",
       "url": siteUrl,
       "image": `${siteUrl}/images/nate_richardson_headshot2.jpg`,
-      "jobTitle": "Frontend Architect, Web Developer",
-      "description": "Frontend-focused architect, all-around builder, and breakfast enthusiast.",
+      "jobTitle": "Frontend Architect and Developer",
+      "description": "Frontend architect and developer in Atlanta, GA, building at Nacho Labs.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Atlanta",
+        "addressRegion": "GA",
+        "addressCountry": "US"
+      },
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Nacho Labs",
+        "url": "https://nacholabs.net"
+      },
       "sameAs": [
         "https://github.com/naterchrdsn",
-        "https://www.linkedin.com/in/naterchrdsn/"
+        "https://www.linkedin.com/in/naterchrdsn/",
+        "https://bsky.app/profile/naterichardson.com",
+        "https://x.com/naterchrdsn",
+        "https://nacholabs.net"
       ]
     })} />
 
@@ -78,9 +101,10 @@ const canonicalUrl = `${siteUrl}${canonicalPath}`;
         g.async=true; g.src=u+'js/container_8BNVnhE0.js?cb=7'; s.parentNode.insertBefore(g,s);
       })();
     </script>
-    <noscript><p><img src="https://analytics.therchrdsns.com/js/container_8BNVnhE0.php" style="border:0;" alt="" /></p></noscript>
+
   </head>
   <body>
+    <noscript><img src="https://analytics.therchrdsns.com/matomo.php?idsite=3&amp;rec=1" width="1" height="1" style="border:0;" alt="" /></noscript>
     <a href="#main-content" class="skip-link">Skip to content</a>
     <main id="main-content">
       <slot />

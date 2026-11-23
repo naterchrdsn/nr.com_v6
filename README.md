@@ -1,32 +1,28 @@
-# nr.com v5
+# nr.com v6
 
-Personal portfolio site for Nate Richardson. Built with a Windows 95 desktop theme on larger screens and a Palm Pilot PDA interface on mobile.
+Personal homepage for Nate Richardson: an interactive constellation pointing to Nacho Labs, projects, code, and social profiles. Each page load creates a new arrangement. Drag a star to rearrange it, or use arrow keys on its handle; labels remain normal links. New sky resets the arrangement. Motion respects the visitor's reduced-motion preference.
 
 ## Tech Stack
 
 - **Astro** - Static site generator
 - **TypeScript** - Type-safe scripting
 - **Tailwind CSS 4** - Utility-first styling
-- **MDX** - Blog content with JSX support
 
 ## Project Structure
 
 ```text
 src/
-  components/
-    desktop/     # Win95 UI: Window, Taskbar, StartMenu, BootScreen, EasterEggs
-    mobile/      # PDA UI: AppGrid, AppIcon, AppScreen, PdaTopBar
-    shared/      # Content used by both layouts: About, Experience, Projects, Contact, Blog
-  content/
-    blog/        # MDX blog posts
-  data/          # TypeScript data files (experience, projects, social)
-  layouts/       # BaseLayout, DesktopOS, MobileOS
-  pages/         # Routes: index, blog, 404
-  styles/        # global.css, win95.css
+  data/          # social links
+  layouts/       # BaseLayout (head, SEO, JSON-LD)
+  pages/         # index, 404
+  components/    # ConstellationHome and retained design experiments
+  styles/        # global.css and retained legacy styles
 public/
-  fonts/         # W95FA (Windows 95 font)
-  icons/         # SVG icons for desktop/app icons
-  images/        # Portfolio images, headshots, favicons
+  llms.txt       # llms.txt summary for LLMs and crawlers
+  index.md       # Markdown version of the homepage (linked via rel="alternate")
+  scripts/       # constellation layout and drag handles
+  prototypes/    # original design explorations; not deployed to production
+  fonts/ icons/ images/
 ```
 
 ## Development
@@ -38,13 +34,17 @@ npm run build    # Build for production
 npm run preview  # Preview production build locally
 ```
 
-## Features
+## Crawlers
 
-- Responsive: Win95 desktop (768px+) / Palm Pilot PDA (mobile)
-- Draggable, resizable windows with minimize/maximize/close
-- File Explorer-style experience viewer
-- Tabbed project showcase (Open Source / Case Studies / Client Work)
-- Boot sequence with BIOS animation
-- Easter eggs: Clippy, Konami code, BSOD, right-click context menu, screensaver
-- Blog system via MDX content collections
-- Full SEO: structured data, Open Graph, sitemap
+SEO includes canonical URLs, Open Graph and X cards, Person structured data,
+`/llms.txt`, `/index.md`, and a generated sitemap excluding the noindexed 404 page.
+The existing Matomo Tag Manager container `8BNVnhE0` is retained (site ID 3).
+
+## Publishing
+
+Source: https://github.com/naterchrdsn/nr.com_v6. The previous `nr.com_v5` repository remains separate.
+Build with `npm ci && npm run build`; publish `dist/` to the naterichardson.com
+20i document root, excluding `prototypes/`. Preserve unrelated directories,
+especially `analytics/` and `workout/`; never mirror-delete the hosting root.
+Back up changed files before replacement, upload assets before HTML, purge the
+site's StackCDN cache, and verify the bare public URL and analytics requests.

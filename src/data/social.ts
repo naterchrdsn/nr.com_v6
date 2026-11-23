@@ -6,6 +6,11 @@ export interface SocialLink {
 
 export const socialLinks: SocialLink[] = [
   {
+    label: 'X',
+    url: 'https://x.com/naterchrdsn',
+    icon: 'x',
+  },
+  {
     label: 'GitHub',
     url: 'https://github.com/naterchrdsn',
     icon: 'github',

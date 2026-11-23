@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#070c16">
+<title>Nate Richardson — Horizon</title>
+<meta name="description" content="Frontend architect & developer in Atlanta, GA. An observatory horizon exploration.">
+<style>
+:root{color-scheme:dark;--ink:#f1f0e9;--muted:#adb8c5;--accent:#ffd7a0}*{box-sizing:border-box}html{background:#070c16}body{margin:0;color:var(--ink);font-family:Arial,Helvetica,sans-serif;background:radial-gradient(ellipse at 60% 24%,#29314d,transparent 55%),#070c16}button,a{-webkit-tap-highlight-color:transparent}a{color:inherit;text-decoration:none}a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:6px}button{font:inherit;color:inherit;cursor:pointer}canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none}#sky{z-index:0}#events{z-index:1}.vignette{position:fixed;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(4,8,18,.38),transparent 22%,transparent 52%,#070c16 95%);z-index:2}.landscape{position:fixed;bottom:0;left:0;width:100%;height:52vh;min-height:330px;z-index:3;pointer-events:none}.review{position:absolute;top:27px;left:4.5%;right:4.5%;z-index:6;display:flex;justify-content:space-between;align-items:center;gap:20px;color:#d2d9e4;font-size:11px;letter-spacing:.13em;text-transform:uppercase}.review a{padding:12px 0}.review .pages{display:flex;align-items:center;gap:23px}.review .number{color:#b6c2d2}.review .number b{color:var(--accent);font-weight:normal;margin-right:9px}.review a:hover{color:var(--accent)}.sky-caption{position:absolute;top:26%;left:4.5%;z-index:4;display:flex;align-items:center;gap:12px;color:#b8c8da;font-size:10px;letter-spacing:.22em;text-transform:uppercase}.sky-caption:before{content:"";display:block;width:35px;height:1px;background:#b8c8da80}.sky-caption span{opacity:.8}.controls{position:absolute;z-index:6;right:4.5%;top:105px;display:flex;gap:10px;align-items:center}.controls button{background:#0a15265e;border:1px solid #bbcfe038;border-radius:30px;min-height:44px;padding:12px 18px;font-size:11px;letter-spacing:.04em;backdrop-filter:blur(8px)}.controls button:hover{border-color:#e8d4ad;background:#18273c}.controls #comet{color:#f6dbb9}.controls #comet:before{content:'↗';font-size:17px;margin-right:9px}.controls #motion{color:#c1cddd}.content{position:relative;z-index:5;min-height:100svh;padding:46vh 7% 118px;display:flex;flex-direction:column;justify-content:flex-end}.identity{max-width:800px}.eyebrow{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:#d4b88e;margin:0 0 21px;display:flex;align-items:center;gap:12px}.eyebrow:before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px #ffbf76}h1{font-weight:400;font-family:Georgia,'Times New Roman',serif;font-size:clamp(54px,6.8vw,104px);line-height:1.04;letter-spacing:-.055em;margin:0 0 24px;text-shadow:0 3px 24px #070c16}.intro{margin:0;color:#b9c3cf;font-size:clamp(15px,1.35vw,18px);line-height:1.8;letter-spacing:.005em}.intro .line{display:block}.intro a{color:#eee4d3;border-bottom:1px solid #8d807266}.intro a:hover{border-color:var(--accent);color:var(--accent)}.destinations{margin-top:39px;display:flex;align-items:center;gap:36px;flex-wrap:wrap}.destinations a{font-size:12px;letter-spacing:.035em;display:inline-flex;gap:15px;align-items:center;min-height:44px;border-bottom:1px solid #48505b85}.destinations a span{color:#b69d7c;font-size:15px;transition:transform .2s}.destinations a:hover{color:var(--accent);border-color:var(--accent)}.destinations a:hover span{transform:translate(2px,-2px)}footer{position:absolute;left:7%;right:7%;bottom:32px;z-index:6;display:flex;justify-content:space-between;align-items:center;color:#798a9f;font-size:10px;letter-spacing:.12em;text-transform:uppercase}footer .horizon-mark{display:flex;align-items:center;gap:11px}footer .horizon-mark:before{content:"";width:33px;height:1px;background:#6b7e9580}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}@media(min-width:1100px){.content{padding-left:9%}.landscape{height:51vh}footer{left:9%;right:9%}.identity{max-width:900px}}@media(max-width:650px){.review{top:15px;left:6%;right:6%;font-size:9px;letter-spacing:.08em;gap:10px;align-items:flex-start}.review .pages{gap:14px}.review .number{position:absolute;top:49px;left:0}.controls{top:111px;right:6%;gap:7px}.controls button{font-size:10px;padding:10px 13px}.sky-caption{top:29%;left:6%;font-size:8px;letter-spacing:.16em}.sky-caption:before{width:22px}.content{padding:48vh 7% 110px;min-height:100svh}.landscape{height:59%;min-height:455px}h1{font-size:clamp(51px,12vw,74px);max-width:360px;line-height:1.02;margin-bottom:21px}.eyebrow{font-size:9px;margin-bottom:17px}.intro{font-size:14px;line-height:1.8}.destinations{gap:5px 28px;margin-top:25px;max-width:370px}.destinations a{font-size:12px;min-height:44px;gap:12px}footer{left:7%;right:7%;bottom:25px;font-size:8px;letter-spacing:.08em}footer .horizon-mark:before{width:15px}.vignette{background:linear-gradient(180deg,#04081260,transparent 25%,transparent 36%,#070c16 81%)}}@media(max-height:650px) and (min-width:651px){.content{padding-top:220px;padding-bottom:85px}h1{font-size:61px;margin-bottom:14px}.eyebrow{margin-bottom:12px}.destinations{margin-top:18px}.controls{top:85px}.sky-caption{top:24%}.landscape{height:64vh}footer{bottom:20px}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<canvas id="sky" aria-hidden="true"></canvas>
+<canvas id="events" aria-hidden="true"></canvas>
+<div class="vignette" aria-hidden="true"></div>
+<header class="review"><a href="/prototypes/index.html">← All concepts</a><div class="number"><b>05</b> Horizon</div><nav class="pages" aria-label="Concept review"><a href="spectrum.html">← Previous</a><a href="observatory.html">Next →</a></nav></header>
+<div class="sky-caption" aria-hidden="true">A little perspective. <span>A little possibility.</span></div>
+<div class="controls" aria-label="Sky controls"><button id="comet" type="button">Send a comet</button><button id="motion" type="button" aria-pressed="false">Pause motion</button></div>
+<svg class="landscape" viewBox="0 0 1440 600" preserveAspectRatio="none" aria-hidden="true">
+<defs><linearGradient id="far" x2="0" y2="1"><stop stop-color="#1b2639"/><stop offset="1" stop-color="#0a111e"/></linearGradient><linearGradient id="ground" x2="0" y2="1"><stop stop-color="#0a101b"/><stop offset=".65" stop-color="#070c16"/></linearGradient></defs>
+<path fill="url(#far)" d="M0 174 37 165 70 179 110 150 140 156 188 119 210 130 248 96 270 120 295 112 345 154 388 142 420 153 460 137 510 158 552 139 580 152 610 125 650 113 700 145 750 129 790 142 830 112 868 120 905 94 940 110 971 84 999 93 1040 64 1067 79 1110 50 1149 83 1180 75 1222 107 1250 102 1290 135 1340 119 1380 143 1440 126V600H0Z"/>
+<path fill="#111b2b" d="M0 220 60 207 105 228 154 195 198 211 244 178 280 196 320 181 366 212 411 197 468 228 510 219 550 230 600 210 651 234 700 216 760 195 815 210 865 183 910 192 950 166 995 175 1050 149 1112 155 1170 126 1220 142 1255 133 1301 163 1345 154 1395 175 1440 166V600H0Z"/>
+<path fill="url(#ground)" d="M0 285C120 280 169 254 260 269S413 299 535 285 722 288 828 256 967 219 1042 222 1140 240 1210 225 1352 240 1440 244V600H0Z"/>
+<g transform="translate(1050 155)" fill="#080e19"><path d="M-55 73H76V81H-55Z M-36 24H58V74H-36Z"/><path d="M-43 25A51 51 0 0 1 59 25Z"/><path d="M4-23 13-25 23 25H14Z" fill="#233044"/><path d="M-42 27H59V32H-42Z" fill="#151f2f"/><path d="M74 72V49H80V72ZM68 49 86 37 89 41 72 53Z"/><path d="M-8 57H4V74H-8Z" fill="#d69a54" opacity=".55"/><path d="M-9 57H-5V74H-9Z" fill="#080e19"/></g>
+<path d="M1065 244c-38 14-90 41-112 65" fill="none" stroke="#28303b" stroke-width="1" opacity=".4"/>
+</svg>
+<main class="content"><div class="identity"><p class="eyebrow">Atlanta, GA · Looking up, building forward</p><h1>Nate Richardson</h1><p class="intro"><span class="line">Frontend architect &amp; developer in Atlanta, GA.</span><span class="line">I build things at <a href="https://nacholabs.net">Nacho Labs</a>.</span></p></div><nav class="destinations" aria-label="Find me"><a href="https://nacholabs.net/projects">Projects <span aria-hidden="true">↗</span></a><a href="https://github.com/naterchrdsn">GitHub <span aria-hidden="true">↗</span></a><a href="https://www.linkedin.com/in/naterchrdsn/">LinkedIn <span aria-hidden="true">↗</span></a><a href="https://bsky.app/profile/naterichardson.com">Bluesky <span aria-hidden="true">↗</span></a></nav></main>
+<footer><span class="horizon-mark">An open sky. An open mind.</span><span>Horizon / 05</span></footer>
+<p id="status" role="status" class="sr-only"></p>
+<script>
+(()=>{'use strict';
+const sky=document.getElementById('sky'),fx=document.getElementById('events');
+const ctx=sky.getContext('2d'),f=fx.getContext('2d');
+if(!ctx||!f)return;
+const pauseButton=document.getElementById('motion'),cometButton=document.getElementById('comet'),status=document.getElementById('status');
+const preference=matchMedia('(prefers-reduced-motion: reduce)');
+let W=0,H=0,dpr=1,paused=preference.matches,raf=0,last=0,time=0,flight=null,nextMeteor=5,meteors=[],resizeTimer;
+let seed=7503;const random=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296};
+const hash=(x,y)=>{let n=Math.imul(x,374761393)+Math.imul(y,668265263);n=Math.imul(n^(n>>>13),1274126177);return((n^(n>>>16))>>>0)/4294967295};
+const smooth=t=>t*t*(3-2*t);
+function noise(x,y){const a=Math.floor(x),b=Math.floor(y),u=smooth(x-a),v=smooth(y-b);return(hash(a,b)*(1-u)+hash(a+1,b)*u)*(1-v)+(hash(a,b+1)*(1-u)+hash(a+1,b+1)*u)*v}
+function fbm(x,y){return noise(x,y)*.5+noise(x*2.03+17,y*2.03)*.27+noise(x*4.07,y*4.07+4)*.14+noise(x*8.1,y*8.1)*.07}
+// Bake the detailed gas and dark dust once, not per animation frame.
+const nebula=document.createElement('canvas');nebula.width=800;nebula.height=500;
+const nc=nebula.getContext('2d'),image=nc.createImageData(800,500);
+for(let y=0;y<500;y++)for(let x=0;x<800;x++){
+ const u=x/800,v=y/500,n=fbm(u*5.7,v*5.7),warp=noise(u*4+7,v*4)*.19;
+ const spine=.41-.26*u+.085*Math.sin(u*7)+warp;
+ const band=Math.exp(-Math.pow((v-spine)/.15,2));
+ const structure=Math.pow(Math.max(0,n-.27)*2.2,1.8);
+ const dust=Math.max(0,noise(u*11+2,v*10+5)-.48)*2.8;
+ const density=band*structure*(1-Math.min(.9,dust));
+ const filament=band*Math.pow(Math.max(0,fbm(u*14,v*13)-.50)*5,2)*.6;
+ const warm=Math.exp(-Math.pow((u-.60)/.22,2));
+ const blue=Math.exp(-Math.pow((u-.31)/.29,2));
+ const k=(y*800+x)*4;
+ image.data[k]=5+density*(95+155*warm)+filament*100;
+ image.data[k+1]=10+density*(80+50*warm+45*blue)+filament*115;
+ image.data[k+2]=24+density*(160+70*blue)+filament*150;
+ image.data[k+3]=255;
+}nc.putImageData(image,0,0);
+const stars=Array.from({length:650},()=>({x:random(),y:random()*.8,r:random(),a:.15+random()*.7,phase:random()*6.28}));
+function size(){W=innerWidth;H=innerHeight;dpr=Math.min(devicePixelRatio||1,1.6);for(const c of [sky,fx]){c.width=Math.round(W*dpr);c.height=Math.round(H*dpr)}ctx.setTransform(dpr,0,0,dpr,0,0);f.setTransform(dpr,0,0,dpr,0,0);paintSky();paintEffects();}
+function paintSky(){ctx.fillStyle='#060c1b';ctx.fillRect(0,0,W,H);ctx.drawImage(nebula,0,0,W,H*.94);ctx.save();
+for(const s of stars){const x=s.x*W,y=s.y*H,r=s.r>.986?1.6:s.r>.88?.9:.48;ctx.globalAlpha=s.a;ctx.fillStyle=s.r>.7?'#f3d5b9':'#d6e7ff';ctx.beginPath();ctx.arc(x,y,r,0,7);ctx.fill();if(s.r>.986){const g=ctx.createRadialGradient(x,y,0,x,y,12);g.addColorStop(0,'#dce9ff65');g.addColorStop(1,'#b6d9ff00');ctx.fillStyle=g;ctx.fillRect(x-12,y-12,24,24);ctx.globalAlpha=.32;ctx.fillStyle='#e8f4ff';ctx.fillRect(x-5,y-.3,10,.6);ctx.fillRect(x-.3,y-5,.6,10)}}ctx.restore();}
+function comet(x,y,alpha,scale=1){f.save();f.globalAlpha=alpha;f.translate(x,y);f.rotate(-.21);const len=Math.min(W*.37,420)*scale;
+// Broad amber dust fan and a separate, colder blue ion tail.
+f.globalCompositeOperation='screen';let g=f.createLinearGradient(-len,0,0,0);g.addColorStop(0,'#efb67a00');g.addColorStop(.65,'#c3ac7948');g.addColorStop(1,'#fff2cdcf');f.fillStyle=g;f.beginPath();f.moveTo(0,0);f.bezierCurveTo(-len*.35,-7,-len*.65,-62,-len,-51);f.bezierCurveTo(-len*.72,-17,-len*.3,12,0,0);f.fill();
+g=f.createLinearGradient(-len*1.1,0,0,0);g.addColorStop(0,'#5aa9ff00');g.addColorStop(.75,'#7fc7ff70');g.addColorStop(1,'#c6f5ffed');f.fillStyle=g;f.beginPath();f.moveTo(0,0);f.lineTo(-len*1.1,16);f.lineTo(-len*.7,6);f.closePath();f.fill();
+for(let i=0;i<28;i++){const q=i/28;f.fillStyle=`rgba(207,212,218,${(1-q)*.37})`;f.beginPath();f.arc(-len*q,Math.sin(i*8.1)*q*9-18*q*q,.5+(1-q)*.5,0,7);f.fill()}
+g=f.createRadialGradient(0,0,0,0,0,28);g.addColorStop(0,'#ffffffef');g.addColorStop(.1,'#bceeffc9');g.addColorStop(.35,'#78caff33');g.addColorStop(1,'#73bbff00');f.fillStyle=g;f.fillRect(-28,-28,56,56);f.fillStyle='#f8ffff';f.beginPath();f.arc(0,0,1.9,0,7);f.fill();f.restore();}
+function paintEffects(){f.clearRect(0,0,W,H);if(flight){const p=flight.age/flight.duration;const fade=Math.min(1,p*7,(1-p)*6);comet(W*(.12+p*.94),H*(.36-p*.25),Math.max(0,fade));}else{comet(W*.73,H*.18,.78,.68)}
+for(const m of meteors){if(m.age<0)continue;const p=m.age/m.life,a=Math.sin(p*Math.PI)*.64,x=(m.x+p*.19)*W,y=(m.y+p*.15)*H;f.save();f.globalAlpha=a;let g=f.createLinearGradient(x-70,y-35,x,y);g.addColorStop(0,'#a9dbff00');g.addColorStop(1,'#e1f2ffd9');f.strokeStyle=g;f.lineWidth=1.15;f.beginPath();f.moveTo(x-70,y-35);f.lineTo(x,y);f.stroke();f.restore()}}
+function frame(now){raf=0;if(paused||document.hidden)return;const dt=Math.min((now-(last||now))/1000,.045);last=now;time+=dt;
+if(flight){flight.age+=dt;if(flight.age>=flight.duration){flight=null;status.textContent='The comet has crossed the sky.'}}
+if(time>nextMeteor){nextMeteor=time+5+random()*7;if(meteors.length<5)meteors.push({x:random()*.75,y:.08+random()*.22,age:0,life:.8+random()*.6})}
+for(const m of meteors)m.age+=dt;meteors=meteors.filter(m=>m.age<m.life);paintEffects();raf=requestAnimationFrame(frame)}
+function run(){if(!paused&&!document.hidden&&!raf){last=0;raf=requestAnimationFrame(frame)}}
+function updateButton(){pauseButton.textContent=paused?'Resume motion':'Pause motion';pauseButton.setAttribute('aria-pressed',String(paused))}
+pauseButton.addEventListener('click',()=>{paused=!paused;updateButton();if(paused){cancelAnimationFrame(raf);raf=0}else run()});
+cometButton.addEventListener('click',()=>{if(paused||preference.matches){flight=null;meteors=[];paintEffects();comet(W*.52,H*.31,.9,.9);status.textContent='A comet and its blue ion tail are visible in the still sky. Resume motion to see it travel.';return}
+flight={age:0,duration:6.8};meteors=Array.from({length:4},(_,i)=>({x:.12+i*.17,y:.06+i*.025,age:-i*.27,life:1.5+i*.18}));status.textContent='A comet is crossing the sky.';run()});
+document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0;last=0}else run()});
+preference.addEventListener('change',e=>{paused=e.matches;updateButton();cancelAnimationFrame(raf);raf=0;flight=null;meteors=[];paintEffects();run()});
+window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(size,130)});
+size();updateButton();run();
+})();
+</script>
+</body>
+</html>

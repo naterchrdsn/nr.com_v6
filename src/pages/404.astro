@@ -2,27 +2,14 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="404 - File Not Found | Nate Richardson" canonicalPath="/404">
+<BaseLayout title="404 - Page Not Found | Nate Richardson" description="This page could not be found. Return to Nate Richardson’s homepage." canonicalPath="/404" noindex>
   <div class="error-page">
-    <div class="error-dialog win95-raised">
-      <!-- Title Bar -->
-      <div class="win95-titlebar">
-        <span class="win95-titlebar-text">404 - File Not Found</span>
-        <div class="win95-titlebar-buttons">
-          <a href="/" class="win95-titlebar-btn" aria-label="Close">
-            <svg viewBox="0 0 8 8"><line x1="1" y1="1" x2="7" y2="7" stroke="black" stroke-width="1.5"/><line x1="7" y1="1" x2="1" y2="7" stroke="black" stroke-width="1.5"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Dialog Body -->
+    <div class="error-dialog">
       <div class="error-body">
-        <div class="error-icon">&#9888;</div>
-        <div class="error-content win95-text">
-          <p class="error-heading">Cannot find file or folder</p>
+        <div class="error-content">
+          <h1 class="error-heading">Page not found</h1>
           <p class="error-detail">
-            The item 'C:\NATERICHARDSON\{Astro.url.pathname}' does not exist.
-            It may have been moved, renamed, or deleted.
+            This page may have moved or no longer exists.
           </p>
           <p class="error-suggestion">
             Make sure the path is correct and try again.
@@ -32,7 +19,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       <!-- Buttons -->
       <div class="error-actions">
-        <a href="/" class="win95-button error-btn">OK</a>
+        <a href="/" class="error-btn">Back to home</a>
       </div>
     </div>
   </div>
@@ -42,7 +29,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .error-page {
     position: fixed;
     inset: 0;
-    background: var(--win95-desktop-bg);
+    background: #07030f;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -52,7 +39,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .error-dialog {
     max-width: 420px;
     width: 100%;
-    padding: 3px;
+    padding: 24px;
   }
 
   .error-body {
@@ -75,20 +62,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .error-heading {
     font-weight: bold;
     margin: 0 0 8px 0;
-    font-size: 12px;
+    font-size: 28px;
   }
 
   .error-detail {
     margin: 0 0 8px 0;
-    font-size: 11px;
+    font-size: 16px;
     line-height: 1.5;
     word-break: break-all;
   }
 
   .error-suggestion {
     margin: 0;
-    font-size: 11px;
-    color: var(--win95-darkgrey);
+    font-size: 16px;
+    color: #bcb2d0;
   }
 
   .error-actions {
@@ -101,8 +88,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     min-width: 90px;
     text-align: center;
     text-decoration: none;
-    color: var(--win95-black);
+    color: #f3f1fa;
     font-family: inherit;
-    font-size: 11px;
+    font-size: 16px;
   }
 </style>

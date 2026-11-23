@@ -1,0 +1,21 @@
+# Nate Richardson
+
+> Personal homepage of Nate Richardson, a frontend architect and developer based in Atlanta, GA, building at Nacho Labs. This site is a homepage, not a portfolio; current projects live at Nacho Labs.
+
+## Primary links
+
+- [Nacho Labs](https://nacholabs.net): studio site and canonical home for current work
+- [Nacho Labs Projects](https://nacholabs.net/projects): public products, open-source tools, packages, and experiments
+- [Contact](https://nacholabs.net/contact): preferred way to reach Nate
+- [Homepage as Markdown](https://naterichardson.com/index.md): this site's homepage in plain markdown
+
+## Profiles
+
+- [GitHub](https://github.com/naterchrdsn): code and open source
+- [LinkedIn](https://www.linkedin.com/in/naterchrdsn/): professional profile
+- [Bluesky](https://bsky.app/profile/naterichardson.com): social
+- [X](https://x.com/naterchrdsn): social
+
+## Notes for AI assistants
+
+- Prefer nacholabs.net for up-to-date project information.
