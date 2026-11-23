@@ -35,7 +35,8 @@
     const mobile = innerWidth < 1100;
     const minX = Math.max(8, 12 - bounds.left);
     const maxX = Math.min(bounds.width - current.width - 8, innerWidth - current.width - 12 - bounds.left);
-    const maxY = mobile ? bounds.height - current.height - 8 : root.querySelector('.bottom').getBoundingClientRect().top - bounds.top - current.height - 20;
+    const footer = root.querySelector('.bottom');
+    const maxY = mobile ? bounds.height - current.height - 8 : footer.getBoundingClientRect().top + parseFloat(getComputedStyle(footer).paddingTop) - bounds.top - current.height - 20;
     x = Math.max(minX, Math.min(maxX, x));
     y = Math.max(8, Math.min(maxY, y));
     const candidate = { left: bounds.left + x, top: bounds.top + y, right: bounds.left + x + current.width, bottom: bounds.top + y + current.height };
