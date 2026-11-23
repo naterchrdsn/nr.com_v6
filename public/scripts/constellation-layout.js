@@ -75,7 +75,7 @@
   root.querySelector('#new-sky').addEventListener('click', () => {
     seed = crypto.getRandomValues(new Uint32Array(1))[0];
     layout();
-    status.textContent = 'New constellation generated.';
+    status.textContent = 'New galaxy generated.';
   });
   addEventListener('resize', layout);
   layout();

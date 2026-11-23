@@ -4,12 +4,14 @@
   const canvas = document.querySelector('#sky');
   const ctx = canvas.getContext('2d');
   const links = [...root.querySelectorAll('.destination')];
-  const pause = root.querySelector('#pause');
+
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
   const geometry = window.ConstellationGeometry;
   let w = 0, h = 0, cloud = null, scene = null, points = [], edges = [];
   let time = 0, birth = reduce.matches ? 7 : 0, paused = reduce.matches;
   let raf = 0, bakeFrame = 0, last = 0, active = -1;
+  let pulses = geometry.createPulses(links.length, Math.random);
+  let pulse = { index: -1, progress: 0 };
   const randomStars = geometry.rng(51874);
   const stars = Array.from({ length: 450 }, () => ({
     x: randomStars(), y: randomStars(), r: 0.25 + randomStars() * 1.05,
@@ -124,13 +126,14 @@
       }
     }
     points.forEach((p, i) => bloom(ctx, p.x, p.y, active === i ? 65 : 25, active === i ? '230,174,250' : '117,161,242', active === i ? 0.33 : 0.18));
-    const origin = points[0];
-    if (origin && birth < 5 && !reduce.matches) {
-      const wave = Math.min(1, birth / 4);
-      ctx.strokeStyle = `rgba(215,189,249,${Math.sin(wave * Math.PI) * 0.1})`;
-      ctx.lineWidth = 2;
-      ctx.beginPath(); ctx.arc(origin.x, origin.y, wave * Math.max(w, h) * 0.7, 0, Math.PI * 2); ctx.stroke();
+    const origin = points[pulse.index];
+    if (origin && !paused) {
+      const wave = pulse.progress;
+      ctx.strokeStyle = `rgba(215,189,249,${Math.sin(wave * Math.PI) * 0.075})`;
+      ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.arc(origin.x, origin.y, wave * Math.max(w, h) * 0.55, 0, Math.PI * 2); ctx.stroke();
     }
+    canvas.dataset.pulseStar = String(paused ? -1 : pulse.index);
     ctx.globalAlpha = 1;
     ctx.globalCompositeOperation = 'source-over';
   }
@@ -139,15 +142,16 @@
     raf = 0;
     if (paused || document.hidden) return;
     const dt = last ? Math.min(0.05, (ts - last) / 1000) : 0.016;
-    last = ts; time += dt; birth += dt; draw();
+    last = ts; time += dt; birth += dt; pulse = pulses.tick(dt); draw();
     raf = requestAnimationFrame(frame);
   }
   function start() {
     if (!raf && !paused && !document.hidden) { last = 0; raf = requestAnimationFrame(frame); }
   }
   function sync() {
-    pause.textContent = paused ? 'Resume motion' : 'Pause motion';
-    pause.setAttribute('aria-pressed', String(paused));
+    canvas.dataset.motion = paused ? 'static' : 'animated';
+    pulse = { index: -1, progress: 0 };
+    pulses = geometry.createPulses(links.length, Math.random);
     if (paused) { cancelAnimationFrame(raf); raf = 0; birth = Math.max(5, birth); draw(); }
     else start();
   }
@@ -159,21 +163,16 @@
     positions(); draw();
   }
   addEventListener('galaxychange', event => {
+    if (!scene || scene.seed !== event.detail.seed) {
+      pulses = geometry.createPulses(links.length, Math.random);
+      pulse = { index: -1, progress: 0 };
+    }
     scene = event.detail;
     cancelAnimationFrame(bakeFrame);
     // Coalesce rapid resizes; cloud textures are cached, not painted per frame.
     bakeFrame = requestAnimationFrame(() => { bakeFrame = 0; bake(); positions(); draw(); });
   });
-  pause.addEventListener('click', () => { paused = !paused; sync(); });
-  root.querySelector('#replay').addEventListener('click', () => {
-    if (paused || reduce.matches) {
-      birth = 7; active = 0; draw();
-      root.querySelector('#status').textContent = 'First light: the constellation is illuminated.';
-    } else {
-      birth = 0; start();
-      root.querySelector('#status').textContent = 'Replaying first light.';
-    }
-  });
+
   links.forEach((link, i) => {
     const on = () => { active = i; draw(); };
     const off = () => { active = -1; draw(); };

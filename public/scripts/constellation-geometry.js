@@ -69,5 +69,36 @@
     return edges;
   }
 
-  window.ConstellationGeometry = Object.freeze({ rng, galaxy, tree });
+  // Shuffled bags avoid repeats until every point has had its turn. Only one
+  // 3.6-second pulse is active, followed by 4.4–8.4 seconds of quiet.
+  function createPulses(count, random) {
+    let bag = [], previous = -1, index = -1, elapsed = 0;
+    let wait = 2.5 + random() * 2;
+    return {
+      tick(dt) {
+        if (index >= 0) {
+          elapsed += dt;
+          if (elapsed >= 3.6) {
+            previous = index; index = -1; wait = 4.4 + random() * 4;
+          }
+        } else if (count > 0) {
+          wait -= dt;
+          if (wait <= 0) {
+            if (!bag.length) {
+              bag = Array.from({ length: count }, (_, i) => i);
+              for (let i = bag.length - 1; i > 0; i--) {
+                const j = Math.floor(random() * (i + 1));
+                [bag[i], bag[j]] = [bag[j], bag[i]];
+              }
+              if (count > 1 && bag[bag.length - 1] === previous) [bag[0], bag[bag.length - 1]] = [bag[bag.length - 1], bag[0]];
+            }
+            index = bag.pop(); elapsed = 0;
+          }
+        }
+        return { index, progress: index >= 0 ? elapsed / 3.6 : 0 };
+      },
+    };
+  }
+
+  window.ConstellationGeometry = Object.freeze({ rng, galaxy, tree, createPulses });
 })();

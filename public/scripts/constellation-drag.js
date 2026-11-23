@@ -59,7 +59,7 @@
     const button = handles[index];
     button.classList.remove('dragging');
     if (button.hasPointerCapture(pointer)) button.releasePointerCapture(pointer);
-    status.textContent = cancel ? 'Star movement cancelled.' : 'Star repositioned. New sky resets the arrangement.';
+    status.textContent = cancel ? 'Star movement cancelled.' : 'Star repositioned. New galaxy resets the arrangement.';
   }
   handles.forEach((button, index) => {
     button.addEventListener('pointerdown', (event) => {

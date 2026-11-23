@@ -15,7 +15,7 @@ test('enlarged destination text grows the galaxy instead of colliding', async ({
   expect(failures).toEqual([]);
 });
 
-test('New sky changes the painted galaxy while paused; dragging does not regenerate it', async ({ page }) => {
+test('New galaxy changes the painted scene with reduced motion; dragging does not regenerate it', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/');
   await expect(page.locator('#sky')).toHaveAttribute('data-galaxy-seed', await page.locator('.constellation').getAttribute('data-sky-seed'));
@@ -30,7 +30,7 @@ test('New sky changes the painted galaxy while paused; dragging does not regener
   await page.locator('.star-handle').first().focus();
   await page.keyboard.press('ArrowRight');
   expect(await page.evaluate(() => JSON.stringify(document.querySelector('.constellation').galaxy))).toEqual(scene);
-  await expect(page.locator('#pause')).toHaveText('Resume motion');
+  await expect(page.locator('#sky')).toHaveAttribute('data-motion', 'static');
 });
 
 // Sweep deterministic seeds in a real browser: label geometry, not abstract

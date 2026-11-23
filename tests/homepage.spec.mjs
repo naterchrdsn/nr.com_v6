@@ -42,7 +42,7 @@ test('homepage metadata, destinations, and instructions', async ({ page }) => {
   expect(errors).toEqual([]);
 });
 
-test('reload and New sky generate different arrangements', async ({ page }) => {
+test('reload and New galaxy generate different arrangements', async ({ page }) => {
   await page.goto('/');
   const seed = await page.locator('.constellation').getAttribute('data-sky-seed');
   await page.reload();
@@ -99,15 +99,14 @@ test('arrow keys move stars; Escape restores a mouse drag', async ({ page }) => 
   expect(await position(page, p.i)).toEqual({ x: before.x + p.dx, y: before.y + p.dy });
 });
 
-test('reduced motion starts paused and remains draggable', async ({ page }) => {
+test('reduced motion stays static when generating another galaxy', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/');
-  await expect(page.locator('#pause')).toHaveText('Resume motion');
-  await expect(page.locator('#pause')).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('#sky')).toHaveAttribute('data-motion', 'static');
+  await expect(page.locator('#sky')).toHaveAttribute('data-pulse-star', '-1');
   await page.locator('#new-sky').click();
-  await expect(page.locator('#pause')).toHaveText('Resume motion');
-  await page.locator('#replay').click();
-  await expect(page.locator('#status')).toContainText('illuminated');
+  await expect(page.locator('#sky')).toHaveAttribute('data-motion', 'static');
+  await expect(page.locator('#sky')).toHaveAttribute('data-pulse-star', '-1');
 });
 
 test('existing Matomo container sends site 3 pageview successfully', async ({ page }) => {
