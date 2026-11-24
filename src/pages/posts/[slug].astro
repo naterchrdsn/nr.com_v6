@@ -1,0 +1,12 @@
+---
+import PublicationLayout from '../../layouts/PublicationLayout.astro';
+import Post from '../../components/PublicationPost.astro';
+import { PUBLISHED_POSTS, postUrl } from '../../data/publication';
+export function getStaticPaths() { return PUBLISHED_POSTS.map(post => ({ params: { slug: post.slug }, props: { post } })); }
+const { post } = Astro.props;
+---
+<PublicationLayout title={post.title} description={post.description} publishedAt={post.publishedAt} canonicalPath={`/posts/${post.slug}/`}>
+  <a class="back-link" href="/posts/">← All posts</a>
+  <Post post={post} detail />
+  <script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', '@type': post.format === 'article' ? 'BlogPosting' : 'SocialMediaPosting', headline: post.title, description: post.description, datePublished: post.publishedAt, url: postUrl(post), mainEntityOfPage: postUrl(post), author: { '@type': 'Person', name: 'Nate Richardson', url: 'https://naterichardson.com' } }).replace(/</g, '\\u003c')} />
+</PublicationLayout>

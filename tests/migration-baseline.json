@@ -1,0 +1,26 @@
+[
+  {
+    "slug": "context-is-not-memory",
+    "sha256": "5589e9a358d43603612697e211eb933dab82a671285630539ece1c48ce75810a"
+  },
+  {
+    "slug": "the-agent-control-plane-is-the-real-product",
+    "sha256": "00ae5779334598e685944856e3ef933571a098216389c22b011142dcd0eeec19"
+  },
+  {
+    "slug": "most-ai-workflows-fail-at-the-human-boundary",
+    "sha256": "9940595f832334b65b25ccc840e48163a326dc61e4ce4ee8f3f740fa5fef4804"
+  },
+  {
+    "slug": "server-hosted-coding-workspace",
+    "sha256": "bfddf6436eb92da7c4bfa00146a8d70489cb4edd3158baaa6094fc9c7f8685a2"
+  },
+  {
+    "slug": "an-assistant-should-be-easy-to-leave",
+    "sha256": "a196ac13a7af5a62c80d30fd2615ef4404cb3ce01de78bb887a4319bc6cf0987"
+  },
+  {
+    "slug": "from-model-monopoly-to-an-ecology-of-expertise",
+    "sha256": "3bf50805bd0e8362d29e8dba9a933aa828f073f584ba4fc92bd21a4eef57d670"
+  }
+]

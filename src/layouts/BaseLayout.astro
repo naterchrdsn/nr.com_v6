@@ -6,6 +6,7 @@ interface Props {
   description?: string;
   canonicalPath?: string;
   noindex?: boolean;
+  publishedAt?: string;
 }
 
 const {
@@ -13,6 +14,7 @@ const {
   description = 'Nate Richardson is a frontend architect and developer in Atlanta, GA, building at Nacho Labs. Explore his projects, code, and social profiles.',
   canonicalPath = '/',
   noindex = false,
+  publishedAt,
 } = Astro.props;
 
 const siteUrl = 'https://naterichardson.com';
@@ -30,6 +32,8 @@ const canonicalUrl = `${siteUrl}${canonicalPath}`;
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="alternate" type="text/markdown" href="/index.md" title="Markdown version" />
+    <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="Nate Richardson — All posts" />
+    {/^\/posts\/(format|category)\/[^/]+\/$/.test(canonicalPath) && <link rel="alternate" type="application/rss+xml" href={`${canonicalPath}rss.xml`} title={`${title} RSS`} />}
     <!-- Machine-readable summary for LLMs and crawlers: /llms.txt -->
 
     <!-- SEO -->
@@ -38,7 +42,8 @@ const canonicalUrl = `${siteUrl}${canonicalPath}`;
     <link rel="canonical" href={canonicalUrl} />
 
     <!-- Open Graph -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={publishedAt ? 'article' : 'website'} />
+    {publishedAt && <><meta property="article:published_time" content={`${publishedAt}T00:00:00Z`} /><meta property="article:author" content="https://naterichardson.com/" /></>}
     <meta property="og:site_name" content="Nate Richardson" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:url" content={canonicalUrl} />
@@ -90,6 +95,7 @@ const canonicalUrl = `${siteUrl}${canonicalPath}`;
 
     <!-- Matomo Analytics -->
     <script>
+      declare global { interface Window { _mtm?: Record<string, unknown>[]; } }
       var _mtm = window._mtm = window._mtm || [];
       _mtm.push({'mtm.startTime': (new Date().getTime()), 'page.title': document.title});
       (function() {
@@ -98,7 +104,7 @@ const canonicalUrl = `${siteUrl}${canonicalPath}`;
         var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
         // The analytics host serves container files with a long CDN TTL. Bump cb when
         // publishing a Matomo container revision so visitors receive the active ruleset.
-        g.async=true; g.src=u+'js/container_8BNVnhE0.js?cb=7'; s.parentNode.insertBefore(g,s);
+        g.async=true; g.src=u+'js/container_8BNVnhE0.js?cb=7'; s.parentNode!.insertBefore(g,s);
       })();
     </script>
 

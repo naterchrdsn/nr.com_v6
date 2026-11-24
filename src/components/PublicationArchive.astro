@@ -1,0 +1,16 @@
+---
+import PublicationLayout from '../layouts/PublicationLayout.astro';
+import PublicationPostCard from './PublicationPost.astro';
+import { FORMATS, CATEGORIES, label } from '../data/publication';
+import type { PublicationPost } from '../data/publication';
+interface Props { title: string; posts: PublicationPost[]; canonicalPath: string; format?: string; category?: string; feedPath?: string; }
+const { title, posts, canonicalPath, format, category, feedPath } = Astro.props;
+---
+<PublicationLayout title={title} canonicalPath={canonicalPath} feedPath={feedPath}>
+  <header class="archive-head"><p class="eyebrow">Nate Richardson · Field notes</p><h1>{title}</h1><p>Articles, notes, links, quotes and updates on things I’m building.</p></header>
+  <nav class="archive-filters" aria-label="Filter posts">
+    <div><span class="filter-label">Format</span><a href="/posts/" aria-current={!format && !category ? 'page' : undefined}>All posts</a>{FORMATS.map(f => <a href={`/posts/format/${f}/`} aria-current={format === f ? 'page' : undefined}>{label(f)}</a>)}</div>
+    <div><span class="filter-label">Topic</span>{CATEGORIES.map(c => <a href={`/posts/category/${c}/`} aria-current={category === c ? 'page' : undefined}>{label(c)}</a>)}</div>
+  </nav>
+  {posts.length ? <ol class="post-feed" aria-label={title}>{posts.map(post => <li><PublicationPostCard post={post} /></li>)}</ol> : <p class="empty-archive">No published {format ? label(format).toLowerCase() : 'posts'} yet. <a href="/posts/">Read all posts →</a></p>}
+</PublicationLayout>

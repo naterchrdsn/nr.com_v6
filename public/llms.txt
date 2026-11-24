@@ -1,10 +1,12 @@
 # Nate Richardson
 
-> Personal homepage of Nate Richardson, a frontend architect and developer based in Atlanta, GA, building at Nacho Labs. This site is a homepage, not a portfolio; current projects live at Nacho Labs.
+> Personal site and publication of Nate Richardson, a frontend architect and developer based in Atlanta, GA, building at Nacho Labs. Articles, notes, links, quotes and own-work updates live here; current project listings live at Nacho Labs.
 
 ## Primary links
 
-- [Nacho Labs](https://nacholabs.net): studio site and canonical home for current work
+- [Posts](https://naterichardson.com/posts/): canonical native publication, including the six articles migrated from Nacho Labs
+- [RSS](https://naterichardson.com/rss.xml): full-content feed; per-format and topic feeds are linked from the archives
+- [Nacho Labs](https://nacholabs.net): canonical home for project listings and experiments
 - [Nacho Labs Projects](https://nacholabs.net/projects): public products, open-source tools, packages, and experiments
 - [Contact](https://nacholabs.net/contact): preferred way to reach Nate
 - [Homepage as Markdown](https://naterichardson.com/index.md): this site's homepage in plain markdown

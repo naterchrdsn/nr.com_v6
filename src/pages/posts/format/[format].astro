@@ -1,0 +1,7 @@
+---
+import Archive from '../../../components/PublicationArchive.astro';
+import { FORMATS, PUBLISHED_POSTS, label } from '../../../data/publication';
+export function getStaticPaths() { return FORMATS.map(format => ({ params: { format }, props: { format, posts: PUBLISHED_POSTS.filter(p => p.format === format) } })); }
+const { posts, format } = Astro.props;
+---
+<Archive title={label(format)} posts={posts} format={format} canonicalPath={`/posts/format/${format}/`} feedPath={`/posts/format/${format}/rss.xml`} />

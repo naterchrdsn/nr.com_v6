@@ -1,0 +1,14 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { FORMATS, label } from '../data/publication';
+import '../styles/publication.css';
+interface Props { title: string; description?: string; canonicalPath: string; feedPath?: string; publishedAt?: string; }
+const { title, description = 'Articles, notes, links, quotes and own-work updates from Nate Richardson.', canonicalPath, feedPath = '/rss.xml' } = Astro.props;
+---
+<BaseLayout title={`${title} — Nate Richardson`} description={description} canonicalPath={canonicalPath} publishedAt={Astro.props.publishedAt}>
+  <div class="publication">
+    <header class="publication-masthead"><a class="wordmark" href="/">✧ Nate Richardson</a><nav aria-label="Publication"><a href="/posts/">Posts</a><a href={feedPath}>RSS ↗</a><a href="https://nacholabs.net/projects">Projects ↗</a></nav></header>
+    <slot />
+    <footer class="publication-footer"><a href="/">← Back to the constellation</a><p>By Nate Richardson · <a href="/rss.xml">Full-content RSS</a></p><details><summary>Feeds by format</summary><ul>{FORMATS.map(format => <li><a href={`/posts/format/${format}/rss.xml`}>{label(format)} RSS</a></li>)}</ul></details></footer>
+  </div>
+</BaseLayout>
