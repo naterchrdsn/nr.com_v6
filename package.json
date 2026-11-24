@@ -12,6 +12,8 @@
     "check": "astro check",
     "posts:validate": "node --input-type=module -e \"import {PUBLICATIONS} from './src/data/publication.ts'; console.log(PUBLICATIONS.length + ' valid publication records');\"",
     "post:draft": "node scripts/draft-post.mjs",
+    "activity:import": "node scripts/import-activity.mjs",
+    "activity:status": "node scripts/import-activity.mjs --status",
     "astro": "astro"
   },
   "dependencies": {

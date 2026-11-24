@@ -1,0 +1,7 @@
+{
+  "githubReleases": [
+    { "repo": "Nacho-Labs-LLC/point-grab", "name": "point-grab" },
+    { "repo": "Nacho-Labs-LLC/hermes-plugin-nachos", "name": "hermes-plugin-nachos" },
+    { "repo": "Nacho-Labs-LLC/fridgeshare", "name": "FridgeShare" }
+  ]
+}

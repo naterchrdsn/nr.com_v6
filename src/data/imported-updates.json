@@ -1,1 +1,47 @@
-[]
+[
+  {
+    "slug": "github-release-454847885",
+    "title": "hermes-plugin-nachos: Nachos v0.7.0 — recall quality, update tracking, links, confidence, provenance and reconciliation",
+    "description": "Release Nachos v0.7.0 — recall quality, update tracking, links, confidence, provenance and reconciliation from hermes-plugin-nachos on GitHub.",
+    "publishedAt": "2026-11-23",
+    "format": "update",
+    "categories": [
+      "development"
+    ],
+    "published": true,
+    "body": "Release **Nachos v0.7.0 — recall quality, update tracking, links, confidence, provenance and reconciliation** from hermes-plugin-nachos. See the original GitHub release for release notes and downloads.",
+    "sourceUrl": "https://github.com/Nacho-Labs-LLC/hermes-plugin-nachos/releases/tag/v0.7.0",
+    "sourceName": "hermes-plugin-nachos on GitHub",
+    "guid": "github:release:454847885"
+  },
+  {
+    "slug": "github-release-451652436",
+    "title": "point-grab: v0.2.0",
+    "description": "Release v0.2.0 from point-grab on GitHub.",
+    "publishedAt": "2026-11-20",
+    "format": "update",
+    "categories": [
+      "development"
+    ],
+    "published": true,
+    "body": "Release **v0.2.0** from point-grab. See the original GitHub release for release notes and downloads.",
+    "sourceUrl": "https://github.com/Nacho-Labs-LLC/point-grab/releases/tag/v0.2.0",
+    "sourceName": "point-grab on GitHub",
+    "guid": "github:release:451652436"
+  },
+  {
+    "slug": "github-release-364366352",
+    "title": "FridgeShare: FridgeShare v0.1.0",
+    "description": "Release FridgeShare v0.1.0 from FridgeShare on GitHub.",
+    "publishedAt": "2026-08-03",
+    "format": "update",
+    "categories": [
+      "development"
+    ],
+    "published": true,
+    "body": "Release **FridgeShare v0.1.0** from FridgeShare. See the original GitHub release for release notes and downloads.",
+    "sourceUrl": "https://github.com/Nacho-Labs-LLC/fridgeshare/releases/tag/v0.1.0",
+    "sourceName": "FridgeShare on GitHub",
+    "guid": "github:release:364366352"
+  }
+]

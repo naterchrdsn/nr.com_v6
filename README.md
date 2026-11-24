@@ -49,8 +49,9 @@ The existing Matomo Tag Manager container `8BNVnhE0` is retained (site ID 3).
 `/posts/` is chronological: articles show excerpts; notes, links, quotes and own-work
 updates render their full Markdown body inline. Every entry has a permalink. Format
 and topic navigation uses static archives, so reading and filtering require no JS.
-The initial publication contains only the six existing articles copied from Nacho
-Labs, unchanged. Empty short-format archives are intentional, not filler content.
+The six existing articles copied from Nacho Labs remain unchanged. Public release
+updates from curated own-work projects are imported with explicit GitHub source
+attribution; other empty short-format archives are intentional, not filler content.
 
 ### Authoring without TypeScript strings
 
@@ -85,11 +86,53 @@ backfill short posts to make an archive appear populated.
 
 Three arrays are combined and validated at build time:
 `migrated-posts.json` (preserved originals), `authored-posts.json` (native drafts and
-approved posts), `imported-updates.json` (reserved importer boundary, initially `[]`).
-Importers must write the same schema, use stable GUIDs, preserve original source
-attribution, dedupe, and explicitly gate publication; this site does not fetch or
-schedule imports. Imported own-work updates should carry `sourceUrl`, `sourceName`
-and `guid`. Research candidates stay unpublished pending editorial review.
+approved posts), `imported-updates.json` (attributed public own-work releases).
+Imported updates carry `sourceUrl`, `sourceName` and a stable numeric-release `guid`.
+Research candidates stay unpublished pending editorial review.
+
+### Own-activity sources
+
+`config/activity-sources.json` is a deliberately small allowlist, cross-checked
+against the public project catalog in `nacho-labs/content/projects.ts`: **point-grab**,
+**hermes-plugin-nachos**, and **FridgeShare**, all under `Nacho-Labs-LLC`. These are
+own projects, not arbitrary forks, client repositories, commits or starred links.
+The importer checks each repository is still public, nonfork and nonarchived.
+Only unauthenticated public GitHub API requests are made; no ambient token is used.
+
+```sh
+npm run activity:status            # fetch source health, counts and selected IDs; no writes
+npm run activity:import            # same dry-run, default
+npm run activity:import -- --write # explicitly update the local registry
+npm run posts:validate
+npm run test:unit && npm run check && npm run build
+```
+
+Each refresh adds at most the latest **published stable release per project**.
+Drafts and prereleases are excluded. Dates come from `published_at`, never refresh
+time. GUIDs use `github:release:<numeric-id>` and slugs use the same immutable ID;
+the original release URL preserves project/source identity. Previously imported
+releases are retained as immutable snapshots, even when the latest release changes
+or a source returns no stable releases. Repeated imports produce identical bytes.
+Bodies are neutral release notices attributed to GitHub, not invented first-person
+commentary or copied third-party reporting. New releases in this explicit allowlist
+are intentionally `published: true` in local build data; `--write` is the import
+approval boundary. Review the resulting diff before committing or deploying.
+
+Requests have a 15-second timeout, 2 MB response cap, and at most three 100-release
+pages per project. The importer fails closed on pagination overflow, malformed
+responses, unsafe/foreign release URLs, private/fork/archived sources or API errors.
+403/429 errors report rate-limit/reset/retry-after headers for manual retry rather
+than hammering the API. **Any source or schema failure leaves the previous registry
+untouched**; validated writes use same-directory atomic replacement. A failed status
+command exits nonzero and identifies the failing source; preceding source statuses
+are informational only, not a partially accepted import.
+
+No personal TIL/tools/research endpoints were found (404 in source discovery), so
+none are configured or fabricated. External editorial sources remain in the
+separate private `nacho-content-pipeline/newsroom/sources.json`; Simon's personal
+sources and external news are not Nate-authored work. There is no cron, automatic
+build-time network fetch, public publishing hook or deployment in this integration.
+Refresh manually, then run the ordinary offline build.
 
 ### Feeds and migration identity
 
