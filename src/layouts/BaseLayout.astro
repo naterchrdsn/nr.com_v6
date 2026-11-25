@@ -31,7 +31,7 @@ const canonicalUrl = `${siteUrl}${canonicalPath}`;
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <link rel="alternate" type="text/markdown" href="/index.md" title="Markdown version" />
+    {canonicalPath === '/' && <link rel="alternate" type="text/markdown" href="/index.md" title="Markdown version" />}
     <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="Nate Richardson — All posts" />
     {/^\/posts\/(format|category)\/[^/]+\/$/.test(canonicalPath) && <link rel="alternate" type="application/rss+xml" href={`${canonicalPath}rss.xml`} title={`${title} RSS`} />}
     <!-- Machine-readable summary for LLMs and crawlers: /llms.txt -->

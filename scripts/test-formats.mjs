@@ -7,7 +7,12 @@ import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import { createServer } from 'node:http';
 import { chromium, expect } from '@playwright/test';
-import { FORMATS } from '../src/data/publication.ts';
+import { FORMATS, PUBLISHED_POSTS } from '../src/data/publication.ts';
+
+// Authored records are replaced by fixtures; migrated/imported records remain.
+const authoredSlugs = new Set(JSON.parse(readFileSync(new URL('../src/data/authored-posts.json', import.meta.url), 'utf8')).map(post => post.slug));
+const retainedPosts = PUBLISHED_POSTS.filter(post => !authoredSlugs.has(post.slug));
+const expectedPublishedCount = retainedPosts.length + FORMATS.length;
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const dir = mkdtempSync(join(tmpdir(), 'publication-formats-'));
@@ -46,7 +51,7 @@ try {
       await expect(card.locator('.post-source a')).toHaveAttribute('href', 'https://example.com/original?x=1&y=2');
       if (format === 'quote') await expect(card.locator('blockquote')).toBeVisible();
     }
-    await expect(page.locator('[data-post]')).toHaveCount(11);
+    await expect(page.locator('[data-post]')).toHaveCount(expectedPublishedCount);
     await expect(page.getByText('hidden-draft')).toHaveCount(0);
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
     await page.getByRole('heading', { name: 'Fixture note', exact: true }).getByRole('link').click();
@@ -65,7 +70,7 @@ try {
     return { errors: doc.querySelectorAll('parsererror').length, items: [...doc.querySelectorAll('item')].map(item => ({ guid: item.querySelector('guid').textContent, html: item.getElementsByTagNameNS('http://purl.org/rss/1.0/modules/content/', 'encoded')[0].textContent })) };
   }, xml);
   assert.equal(parsed.errors, 0);
-  assert.equal(parsed.items.length, 11);
+  assert.equal(parsed.items.length, expectedPublishedCount);
   for (const format of FORMATS) {
     const item = parsed.items.find(item => item.guid === `urn:test:${format}`);
     assert.ok(item.html.includes(`<strong>${format}</strong>`));
